@@ -17,16 +17,17 @@
     );
     map.fitBounds(japanBounds);
 
-    // Watercolorタイルレイヤーを追加
+    // 地理院地図の淡色地図レイヤーを追加
     L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, CC BY 3.0 <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+      attribution: '地理院地図',
       maxZoom: 18,
     }).addTo(map);
 
-    // マーカーを作成し、ポップアップを無効にする
+    // マーカーを作成
     var marker = L.circleMarker([35.682839, 139.759455], {
       radius: 10, // 半径を設定
-      color: 'red', // 色を設定
+      color: 'red', // 外側の色を赤に設定
+      fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
       fillOpacity: 1 // 塗りつぶしの透明度を設定
     }).addTo(map);
 
