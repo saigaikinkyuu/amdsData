@@ -8,13 +8,13 @@
 <body>
   <div id="map" style="height: 400px;"></div>
   <script>
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    var map = L.map('map').setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     // マーカーを作成し、ポップアップを無効にする
-    var marker = L.circleMarker([51.5, -0.09], {
+    var marker = L.circleMarker([35.682839, 139.759455], {
       radius: 10, // 半径を設定
       color: 'red', // 色を設定
       fillOpacity: 1 // 塗りつぶしの透明度を設定
@@ -23,6 +23,12 @@
     // ポップアップを無効にする
     marker.bindPopup(""); // 空のポップアップをバインド
 
+    // 日本の範囲を表示するための境界線を描画
+    var japanBounds = L.latLngBounds(
+      L.latLng(20.0, 122.0), // 南西端の緯度経度
+      L.latLng(45.0, 154.0)  // 北東端の緯度経度
+    );
+    map.fitBounds(japanBounds);
   </script>
 </body>
 </html>
