@@ -9,8 +9,18 @@
   <div id="map" style="height: 400px;"></div>
   <script>
     var map = L.map('map').setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+    // 日本の範囲を表示するための境界線を描画
+    var japanBounds = L.latLngBounds(
+      L.latLng(20.0, 122.0), // 南西端の緯度経度
+      L.latLng(45.0, 154.0)  // 北東端の緯度経度
+    );
+    map.fitBounds(japanBounds);
+
+    // Watercolorタイルレイヤーを追加
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, CC BY 3.0 <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+      maxZoom: 18,
     }).addTo(map);
 
     // マーカーを作成し、ポップアップを無効にする
@@ -22,13 +32,6 @@
 
     // ポップアップを無効にする
     marker.bindPopup(""); // 空のポップアップをバインド
-
-    // 日本の範囲を表示するための境界線を描画
-    var japanBounds = L.latLngBounds(
-      L.latLng(20.0, 122.0), // 南西端の緯度経度
-      L.latLng(45.0, 154.0)  // 北東端の緯度経度
-    );
-    map.fitBounds(japanBounds);
   </script>
 </body>
 </html>
