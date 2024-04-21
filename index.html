@@ -12,9 +12,17 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    var marker = L.marker([51.5, -0.09]).addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+
+    // マーカーを作成し、ポップアップを無効にする
+    var marker = L.circleMarker([51.5, -0.09], {
+      radius: 10, // 半径を設定
+      color: 'red', // 色を設定
+      fillOpacity: 1 // 塗りつぶしの透明度を設定
+    }).addTo(map);
+
+    // ポップアップを無効にする
+    marker.bindPopup(""); // 空のポップアップをバインド
+
   </script>
 </body>
 </html>
