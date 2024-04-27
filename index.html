@@ -33,11 +33,25 @@
             var cod = item.cod;
             var ttl = item.ttl;
             var coords = extractCoordinates(cod);
+            var depth = extractDepth(cod); // 深さを抽出
+            if(depth >= 30){
+              var color = red
+              var rgba = 'rgba(255,0,0,0.3)'
+            }else if(depth >= 100){
+              var color = orange
+              var rgba = 'rgba(255,165,0,0.3)'
+            }else if(depth >= 300){
+              var color = yellow
+              var rgba = 'rgba(255,255,0,0.3)'
+            }else{
+              var color = blue
+              var rgba = 'rgba(0,0,255,0.3)'
+            }
             if (coords && ttl === "震源・震度情報") { // 緯度と経度が取得できた場合
               var marker = L.circleMarker(coords, {
                 radius: 10, // 半径を設定
-                color: 'red', // 外側の色を赤に設定
-                fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
+                color: color, // 外側の色を赤に設定
+                fillColor: rgba, // 中心の色を透明な赤に設定
                 fillOpacity: 1 // 塗りつぶしの透明度を設定
               }).addTo(map);
             }
@@ -56,6 +70,19 @@
         var lat = parseFloat(match[1]); // 緯度
         var lng = parseFloat(match[2]); // 経度
         return [lat, lng];
+      } else {
+        return null;
+      }
+    }
+    // JSONデータから深さを抽出する関数
+    function extractDepth(cod) {
+      var depthRegex = /[-+]?\d+\.\d+[-+]?\d+\.\d+([-+]?\d+\.\d+)/; // 深さを抽出する正規表現パターン
+      var match = cod.match(depthRegex);
+      if (match) {
+        var depth = parseFloat(match[1]); // 深さ
+        // 下3桁を削除
+        depth = Math.floor(depth * 1000) / 1000; // 少数第3位までの値を取得
+        return depth;
       } else {
         return null;
       }
