@@ -75,15 +75,14 @@
         return null;
       }
     }
+    
     // JSONデータから深さを抽出する関数
     function extractDepth(cod) {
-      var depthRegex = /[-+]?\d+\.\d+[-+]?\d+\.\d+([-+]?\d+\.\d+)/; // 深さを抽出する正規表現パターン
-      var match = cod.match(depthRegex);
+      var regex = /\-(\d+\.\d{3})\//; // 深さを抽出する正規表現パターン
+      var match = cod.match(regex);
       if (match) {
         var depth = parseFloat(match[1]); // 深さ
-        // 下3桁を削除
-        depth = Math.floor(depth * 1000) / 1000; // 少数第3位までの値を取得
-        return depth;
+        return depth.toFixed(3); // 少数第3位までの値を取得
       } else {
         return null;
       }
