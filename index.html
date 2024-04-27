@@ -23,6 +23,13 @@
       maxZoom: 7,
       minZoom: 4, // ミニマムズームレベルを設定
     }).addTo(map);
+    // マップの移動範囲を日本国内に制限
+    map.setMaxBounds(japanBounds);
+
+    // マップの表示範囲が日本国外に移動しないようにする
+    map.on('drag', function() {
+      map.panInsideBounds(japanBounds, { animate: false });
+    });
 
     // JSONデータから緯度と経度を抽出してマーカーを作成する関数
     function addMarkersFromJSONURL(jsonURL) {
