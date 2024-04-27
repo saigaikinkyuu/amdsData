@@ -24,18 +24,22 @@
       minZoom: 4, // ミニマムズームレベルを設定
     }).addTo(map);
 
-    // JSONデータを取得し、マーカーを作成する関数
-    function addMarkersFromJSON(jsonURL) {
+    // JSONデータから緯度と経度を抽出してマーカーを作成する関数
+    function addMarkersFromJSONURL(jsonURL) {
       fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
-          data.forEach(coord => {
-            var marker = L.circleMarker(coord, {
-              radius: 10, // 半径を設定
-              color: 'red', // 外側の色を赤に設定
-              fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
-              fillOpacity: 1 // 塗りつぶしの透明度を設定
-            }).addTo(map);
+          data.forEach(item => {
+            var cod = item.cod;
+            var coords = extractCoordinates(cod);
+            if (coords) { // 緯度と経度が取得できた場合
+              var marker = L.circleMarker(coords, {
+                radius: 10, // 半径を設定
+                color: 'red', // 外側の色を赤に設定
+                fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
+                fillOpacity: 1 // 塗りつぶしの透明度を設定
+              }).addTo(map);
+            }
           });
         })
         .catch(error => {
@@ -43,10 +47,23 @@
         });
     }
 
+    // JSONデータから緯度と経度を抽出する関数
+    function extractCoordinates(cod) {
+      var regex = /([-+]?\d+\.\d+)([-+]?\d+\.\d+)/; // 緯度と経度を抽出する正規表現パターン
+      var match = cod.match(regex);
+      if (match) {
+        var lat = parseFloat(match[1]); // 緯度
+        var lng = parseFloat(match[2]); // 経度
+        return [lat, lng];
+      } else {
+        return null;
+      }
+    }
+
     // JSONデータのURL
     var jsonURL = 'https://www.jma.go.jp/bosai/quake/data/list.json'; // ここにJSONデータのURLを追加してください
     // JSONデータからマーカーを作成
-    addMarkersFromJSON(jsonURL);
+    addMarkersFromJSONURL(jsonURL);
 
   </script>
 </body>
