@@ -24,16 +24,30 @@
       minZoom: 4, // ミニマムズームレベルを設定
     }).addTo(map);
 
-    // マーカーを作成
-    var marker = L.circleMarker([35.682839, 139.759455], {
-      radius: 10, // 半径を設定
-      color: 'red', // 外側の色を赤に設定
-      fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
-      fillOpacity: 1 // 塗りつぶしの透明度を設定
-    }).addTo(map);
+    // JSONデータを取得し、マーカーを作成する関数
+    function addMarkersFromJSON(jsonURL) {
+      fetch(jsonURL)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(coord => {
+            var marker = L.circleMarker(coord, {
+              radius: 10, // 半径を設定
+              color: 'red', // 外側の色を赤に設定
+              fillColor: 'rgba(255, 0, 0, 0.3)', // 中心の色を透明な赤に設定
+              fillOpacity: 1 // 塗りつぶしの透明度を設定
+            }).addTo(map);
+          });
+        })
+        .catch(error => {
+          console.error('There was an error fetching the JSON data:', error);
+        });
+    }
 
-    // ポップアップを無効にする
-    marker.bindPopup(""); // 空のポップアップをバインド
+    // JSONデータのURL
+    var jsonURL = 'https://www.jma.go.jp/bosai/quake/data/list.json'; // ここにJSONデータのURLを追加してください
+    // JSONデータからマーカーを作成
+    addMarkersFromJSON(jsonURL);
+
   </script>
 </body>
 </html>
