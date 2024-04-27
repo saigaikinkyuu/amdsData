@@ -31,8 +31,9 @@
         .then(data => {
           data.forEach(item => {
             var cod = item.cod;
+            var ttl = item.ttl;
             var coords = extractCoordinates(cod);
-            if (coords) { // 緯度と経度が取得できた場合
+            if (coords && ttl === "震源・震度情報") { // 緯度と経度が取得できた場合
               var marker = L.circleMarker(coords, {
                 radius: 10, // 半径を設定
                 color: 'red', // 外側の色を赤に設定
