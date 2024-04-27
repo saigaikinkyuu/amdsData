@@ -21,6 +21,7 @@
     L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
       attribution: '地理院地図',
       maxZoom: 18,
+      minZoom: 4, // ミニマムズームレベルを設定
     }).addTo(map);
 
     // マーカーを作成
