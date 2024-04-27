@@ -35,13 +35,13 @@
             var coords = extractCoordinates(cod);
             var depth = extractDepth(cod); // 深さを抽出
             console,log(depth)
-            if(depth >= 30){
+            if(depth <= 30){
               var color = "red"
               var rgba = 'rgba(255,0,0,0.3)'
-            }else if(depth >= 100){
+            }else if(depth <= 100){
               var color = "orange"
               var rgba = 'rgba(255,165,0,0.3)'
-            }else if(depth >= 300){
+            }else if(depth <= 300){
               var color = "yellow"
               var rgba = 'rgba(255,255,0,0.3)'
             }else{
