@@ -52,8 +52,25 @@
     .main {
       display: inline-block;
       width: 200px;
-      border-bottom: 200px solid #ccc;
-      border-right: 50px solid transparent;
+      position: relative; /* 相対配置を有効にする */
+    }
+
+    .main::before {
+      content: ''; /* 擬似要素に内容を設定 */
+      position: absolute; /* 絶対配置を有効にする */
+      top: 0;
+      left: 0;
+      border-top: 200px solid #ccc;
+      border-left: 50px solid transparent;
+    }
+
+    .main::after {
+      content: '震源分布'; /* 擬似要素に内容を設定 */
+      position: absolute; /* 絶対配置を有効にする */
+      top: 50%; /* 上下中央に配置 */
+      left: 50%; /* 左右中央に配置 */
+      transform: translate(-50%, -50%); /* 中央揃え */
+      font-size: 16px; /* フォントサイズを設定 */
     }
   </style>
 </head>
