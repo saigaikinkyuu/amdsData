@@ -109,7 +109,7 @@
     <button onclick="hidePop()">送信</button>
   </div>
   <script>
-    function map(){
+    function map(type){
     var map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
@@ -163,7 +163,7 @@
               var color = "blue"
               var rgba = 'rgba(0,0,255,0.3)'
             }
-            if(document.getElementById('date').textContent !== ""){
+            if(type === "A"){
               var start = document.getElementById('startDate').dataset.date
               var finish = document.getElementById('finishtDate').dataset.date
               if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
@@ -222,7 +222,7 @@
     // JSONデータからマーカーを作成
     addMarkersFromJSONURL(jsonURL);
     }
-    map()
+    map("A")
   </script>
   <script>
     function loadPage(date) {
