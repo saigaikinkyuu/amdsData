@@ -193,29 +193,12 @@
 
   </script>
   <script>
-    function changeDate() {
-      showPop()
-    }
-    function showPop() {
-      document.getElementById('setting').style.display = "show"
-    }
-    function hidePop() {
-      document.getElementById('setting').style.display = "none"
-      var start = document.getElementById('startDate').value
-      var finish = document.getElementById('finishDate').value
-      document.getElementById('startDate').dataset.date = start
-      document.getElementById('finishDate').dataset.date = finish
-      document.getElementById('date').textContent = new Date(start).getDate() + "日(" + new Date(start).getDay() + ")~" + new Date(finish).getDate() + "日(" + new Date(finish).getDay() + ")"
-    }
-    function loadPage(date) {
-      var startDate = new Date().getFullYear(date) + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
+    function loadPage() {
+      var startDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
       var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
-      document.getElementById('startDate').dataset.date = startDate;
-      document.getElementById('finishDate').dataset.date = finishDate;
-      document.getElementById('startDate').value = startDate
-      document.getElementById('finishDate').value = finishDate
       document.getElementById('date').textContent = new Date(start).getDate() + "日(" + new Date(start).getDay() + ")~" + new Date(finish).getDate() + "日(" + new Date(finish).getDay() + ")"
     }
+    loadPage()
   </script>
 </body>
 </html>
