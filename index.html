@@ -110,7 +110,7 @@
   </div>
   <script>
     var map
-    function map(type){
+    function mapMake(type){
     map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
@@ -226,12 +226,12 @@
     // マップをリセットする関数
     function resetMap() {
       map.remove(); // 現在の地図を削除
-      map("B"); // 新しい地図を初期化
+      mapMake("B"); // 新しい地図を初期化
     }
 
     // ページ読み込み時にマップを初期化
     window.onload = function() {
-      map("A");
+      mapMake("A");
     };
   </script>
   <script>
