@@ -201,9 +201,10 @@
     function loadPage(date) {
       var startDate = new Date(date).getFullYear() + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
       var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
+      const weekItems = ["日", "月", "火", "水", "木", "金", "土"];
       document.getElementById('startDate').dataset.date = startDate
       document.getElementById('finishDate').dataset.date = finishDate
-      document.getElementById('date').textContent = new Date(date).getDate() + "日(" + new Date(date).getDay() + ")~" + new Date().getDate() + "日(" + new Date().getDay() + ")"
+      document.getElementById('date').textContent = new Date(date).getDate() + "日(" + weekItems[new Date(date).getDay() + ")~" + new Date().getDate()] + "日(" + weekItems[new Date().getDay()] + ")"
     }
   </script>
 </body>
