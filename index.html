@@ -167,12 +167,12 @@
             if(type !== "A"){
               var start = document.getElementById('startDate').dataset.date
               var finish = document.getElementById('finishDate').dataset.date
-              if(new Date(item.at) >= new Date(start)){
+              if(new Date(item.at).getDate() >= new Date(start).getDate()){
                 console.log("成功")
               }else {
                 console.log("失敗A")
               }
-              if(new Date(item.at) <= new Date(finish)){
+              if(new Date(item.at).getDate() <= new Date(finish).getDate()){
                 console.log("成功")
               }else {
                 console.log("失敗B")
