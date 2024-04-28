@@ -80,7 +80,7 @@
 <body>
   <div id="map" style="height: 700px;"></div>
   <div class="main" style="bottom: 680px; z-index: 10000;"></div>
-  <div style="height: 60px;bottom: 560px;position: absolute;z-index: 10000;width: 400px;background-color: #000000a6;color: white;">
+  <div style="height: 60px;bottom: 560px;position: absolute;z-index: 10000;width: 400px;background-color: #000000a6;color: white;" onclick="changeDate()">
     <h3 id="date" style="margin: 0px;margin-top: 5px;font-size: 35px;"></h3>
   </div>
   <div id="legend" style="color: white;font-size: 20px; z-index: 10000;position: absolute; bottom: 420px; left: 40px; background-color: #000000eb; padding: 5px; width: 190px;">
@@ -89,7 +89,13 @@
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
     <div><span class="legend-circle blue"></span> <span>深さ300km〜</span></div>
   </div>
+  <div id="setting" style="z-index: 10000; position: absolute;">
+    <lavel>開始日：</lavel><input id="startDate" type="date" value="none" data-date="" />
+    <lavel>終了日：</lavel><input id="finishDate" type="date" value="none" data-date="" />
+    <button onclick="hidePop()">送信</button>
+  </div>
   <script>
+    function map(){
     var map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
@@ -183,7 +189,33 @@
     var jsonURL = 'https://www.jma.go.jp/bosai/quake/data/list.json'; // ここにJSONデータのURLを追加してください
     // JSONデータからマーカーを作成
     addMarkersFromJSONURL(jsonURL);
+    }
 
+  </script>
+  <script>
+    function changeDate() {
+      showPop()
+    }
+    function showPop() {
+      document.getElementById('setting').style.display = "show"
+    }
+    function hidePop() {
+      document.getElementById('setting').style.display = "none"
+      var start = document.getElementById('startDate').value
+      var finish = document.getElementById('finishDate').value
+      document.getElementById('startDate').dataset.date = start
+      document.getElementById('finishDate').dataset.date = finish
+      document.getElementById('date').textContent = new Date(start).getDate() + "日(" + new Date(start).getDay() + ")~" + new Date(finish).getDate() + "日(" + new Date(finish).getDay() + ")"
+    }
+    function loadPage(date) {
+      var startDate = new Date().getFullYear(date) + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
+      var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
+      document.getElementById('startDate').dataset.date = startDate;
+      document.getElementById('finishDate').dataset.date = finishDate;
+      document.getElementById('startDate').value = startDate
+      document.getElementById('finishDate').value = finishDate
+      document.getElementById('date').textContent = new Date(start).getDate() + "日(" + new Date(start).getDay() + ")~" + new Date(finish).getDate() + "日(" + new Date(finish).getDay() + ")"
+    }
   </script>
 </body>
 </html>
