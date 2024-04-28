@@ -110,7 +110,7 @@
   <script>
     var map
     function mapMake(type){
-    document.getElementById('setting').style.setProperty('display', 'none');
+    document.getElementById('setting').style.setProperty('display', 'none', "important");
     map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
