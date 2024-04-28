@@ -116,8 +116,6 @@
   <script>
     var map
     function mapMake(type){
-      document.getElementById('setting').classList.remove("visible");
-      document.getElementById('setting').classList.add("hidden");
     map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
@@ -266,6 +264,8 @@
       document.getElementById('setting').classList.remove("hidden");
     }
     function hidePop() {
+      document.getElementById('setting').classList.remove("visible");
+      document.getElementById('setting').classList.add("hidden");
       var start = document.getElementById('startDate').value
       var finish = document.getElementById('finishDate').value
       var startDate = new Date(start).getFullYear() + "-" + ("0" + (new Date(start).getMonth()+1)).slice(-2) + "-" + ("0" + new Date(start).getDate()).slice(-2)
