@@ -163,7 +163,7 @@
               var color = "blue"
               var rgba = 'rgba(0,0,255,0.3)'
             }
-            if(type === "A"){
+            if(type !== "A"){
               var start = document.getElementById('startDate').dataset.date
               var finish = document.getElementById('finishtDate').dataset.date
               if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
