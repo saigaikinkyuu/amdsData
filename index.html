@@ -257,7 +257,7 @@
       document.getElementById('startDate').dataset.date = startDate
       document.getElementById('finishDate').dataset.date = finishDate
       document.getElementById('date').textContent = new Date(start).getDate() + "日(" + weekItems[new Date(start).getDay()] + ")~" + new Date(finish).getDate() + "日(" + weekItems[new Date(finish).getDay()] + ")"
-      map("B")
+      resetMap()
     }
   </script>
 </body>
