@@ -110,7 +110,7 @@
   <script>
     var map
     function mapMake(type){
-    document.getElementById('setting').style.display = "none"
+    document.getElementById('setting').style.setProperty('display', 'none');
     map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
@@ -255,7 +255,7 @@
       document.getElementById('date').textContent = new Date(date).getDate() + "日(" + weekItems[new Date(date).getDay()] + ")~" + new Date().getDate() + "日(" + weekItems[new Date().getDay()] + ")"
     }
     function changeDate() {
-      document.getElementById('setting').style.display = ""
+    document.getElementById('setting').style.setProperty('display', 'block');
     }
     function hidePop() {
       var start = document.getElementById('startDate').value
