@@ -25,58 +25,46 @@
       background-color: rgba(255, 255, 255, 0.7); /* 透明度を指定 */
     }
 
-    .legend-circle.red::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70%;
-      height: 70%;
+    .legend-circle .red{
+      background-color: black;
+      border: solid 8px black;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background-color: red;
+      box-shadow: 0 0 0 2.5px red;
     }
 
-    .legend-circle.orange::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70%;
-      height: 70%;
+    .legend-circle .orange{
+      background-color: black;
+      border: solid 8px black;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background-color: orange;
+      box-shadow: 0 0 0 2.5px orange;
     }
-
-    .legend-circle.yellow::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70%;
-      height: 70%;
+    
+    .legend-circle .yellow{
+      background-color: black;
+      border: solid 8px black;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background-color: yellow;
+      box-shadow: 0 0 0 2.5px yellow;
     }
-
-    .legend-circle.blue::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 70%;
-      height: 70%;
+    
+    .legend-circle .blue{
+      background-color: black;
+      border: solid 8px black;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background-color: blue;
+      box-shadow: 0 0 0 2.5px blue;
     }
   </style>
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
-  <div id="legend" style="z-index: 10000;position: absolute; bottom: 10px; left: 10px; background-color: white; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+  <div id="legend" style="font-size: 20px; z-index: 10000;position: absolute; bottom: 10px; left: 10px; background-color: white; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
     <div><span class="legend-circle red"></span> <span>深さ0〜30km</span></div>
     <div><span class="legend-circle orange"></span> <span>深さ30〜100km</span></div>
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
