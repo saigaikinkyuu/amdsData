@@ -176,8 +176,8 @@
               }else {
                 console.log("失敗B")
               }
-              console.log(new Date(item.at) + "," + item.anm)
-              if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
+              console.log(new Date(item.at).getDate() + "," + item.anm)
+              if (coords && ttl === "震源・震度情報" && new Date(item.at).getDate() >= new Date(start).getDate() && new Date(item.at).getDate() <= new Date(finish).getDate()) { // 緯度と経度が取得できた場合
                 var marker = L.circleMarker(coords, {
                   radius: 10, // 半径を設定
                   color: color, // 外側の色を赤に設定
