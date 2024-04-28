@@ -75,6 +75,18 @@
       font-size: 50px;
       color: #0048a6;
     }
+    #setting{
+      padding-right: 30px;
+      padding-left: 30px;
+      z-index: 10000;
+      position: absolute;
+      bottom: 300px;
+      background-color: white;
+      height: 55px;
+      padding-top: 30px;
+      left: 190px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -151,7 +163,9 @@
               var color = "blue"
               var rgba = 'rgba(0,0,255,0.3)'
             }
-            if (coords && ttl === "震源・震度情報") { // 緯度と経度が取得できた場合
+            var start = document.getElementById('startDate').dataset.date
+            var finish = document.getElementById('finishtDate').dataset.date
+            if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
               var marker = L.circleMarker(coords, {
                 radius: 10, // 半径を設定
                 color: color, // 外側の色を赤に設定
@@ -201,8 +215,8 @@
   </script>
   <script>
     function loadPage(date) {
-      var startDate = new Date(date).getFullYear() + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
-      var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
+      var startDate = new Date(date).getFullYear() + "-" + ("0" + (new Date(date).getMonth()+1)).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
+      var finishDate = new Date().getFullYear() + "-" + ("0" + (new Date().getMonth()+1)).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
       document.getElementById('finishDate').setAttribute('min',startDate)
       const weekItems = ["日", "月", "火", "水", "木", "金", "土"];
       document.getElementById('startDate').dataset.date = startDate
@@ -216,8 +230,8 @@
       document.getElementById('setting').style.display = "none"
       var start = document.getElementById('startDate').value
       var finish = document.getElementById('finishDate').value
-      var startDate = new Date(start).getFullYear() + "-" + ("0" + new Date(start).getMonth()+1).slice(-2) + "-" + ("0" + new Date(start).getDate()).slice(-2)
-      var finishDate = new Date(finish).getFullYear() + "-" + ("0" + new Date(finish).getMonth()+1).slice(-2) + "-" + ("0" + new Date(finish).getDate()).slice(-2)
+      var startDate = new Date(start).getFullYear() + "-" + ("0" + (new Date(start).getMonth()+1)).slice(-2) + "-" + ("0" + new Date(start).getDate()).slice(-2)
+      var finishDate = new Date(finish).getFullYear() + "-" + ("0" + (new Date(finish).getMonth()+1)).slice(-2) + "-" + ("0" + new Date(finish).getDate()).slice(-2)
       const weekItems = ["日", "月", "火", "水", "木", "金", "土"];
       document.getElementById('startDate').dataset.date = startDate
       document.getElementById('finishDate').dataset.date = finishDate
