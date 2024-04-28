@@ -127,6 +127,7 @@
         .then(response => response.json())
         .then(data => {
           data.forEach(item => {
+            console.log(item + "," + date)
             if(item === data.length){
               var date = item.at
             }
@@ -201,7 +202,7 @@
       var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
       document.getElementById('startDate').dataset.date = startDate
       document.getElementById('finishDate').dataset.date = finishDate
-      document.getElementById('date').textContent = new Date(date).getDate() + "日(" + new Date(date).getDay() + ")~" + new Date(date).getDate() + "日(" + new Date(date).getDay() + ")"
+      document.getElementById('date').textContent = new Date(date).getDate() + "日(" + new Date(date).getDay() + ")~" + new Date().getDate() + "日(" + new Date().getDay() + ")"
     }
   </script>
 </body>
