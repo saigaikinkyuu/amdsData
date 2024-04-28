@@ -75,12 +75,6 @@
       font-size: 50px;
       color: #0048a6;
     }
-    .leaflet-control-zoom-in{
-      display:none;
-    }
-    .leaflet-control-zoom-out{
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -110,6 +104,7 @@
       attribution: '地理院地図',
       maxZoom: 7,
       minZoom: 4, // ミニマムズームレベルを設定
+      zoomControl: false
     }).addTo(map);
     // マップの移動範囲を日本国内に制限
     map.setMaxBounds(japanBounds);
