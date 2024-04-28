@@ -126,9 +126,10 @@
       fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
+          var n = 0
           data.forEach(item => {
-            console.log(item + "," + date)
-            if(item === data.length){
+            n++
+            if(n === data.length){
               var date = item.at
             }
             var cod = item.cod;
