@@ -167,6 +167,16 @@
             if(type !== "A"){
               var start = document.getElementById('startDate').dataset.date
               var finish = document.getElementById('finishDate').dataset.date
+              if(new Date(item.at) >= new Date(start)){
+                console.log("成功")
+              }else {
+                console.log("失敗A")
+              }
+              if(new Date(item.at) <= new Date(finish)){
+                console.log("成功")
+              }else {
+                console.log("失敗B")
+              }
               if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
                 var marker = L.circleMarker(coords, {
                   radius: 10, // 半径を設定
@@ -184,8 +194,8 @@
                   fillOpacity: 1 // 塗りつぶしの透明度を設定
                 }).addTo(map);
               }
-            }
             loadPage(date)
+            }
           });
         })
         .catch(error => {
