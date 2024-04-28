@@ -91,7 +91,7 @@
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
-  <div style="bottom: 560px;">
+  <div style="bottom: 560px;" onclick="changeDate()">
     <div class="main" style="bottom: 680px; z-index: 10000;"></div>
     <div style="height: 60px;bottom: 560px;position: absolute;z-index: 10000;width: 400px;background-color: #000000a6;color: white;" onclick="changeDate()">
       <h3 id="date" style="margin: 0px;margin-top: 5px;font-size: 35px;"></h3>
@@ -235,7 +235,7 @@
       document.getElementById('date').textContent = new Date(date).getDate() + "日(" + weekItems[new Date(date).getDay()] + ")~" + new Date().getDate() + "日(" + weekItems[new Date().getDay()] + ")"
     }
     function changeDate() {
-      document.getElementById('setting').style.display = "show"
+      document.getElementById('setting').style.display = "block"
     }
     function hidePop() {
       document.getElementById('setting').style.display = "none"
