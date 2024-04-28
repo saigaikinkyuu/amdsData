@@ -163,15 +163,26 @@
               var color = "blue"
               var rgba = 'rgba(0,0,255,0.3)'
             }
-            var start = document.getElementById('startDate').dataset.date
-            var finish = document.getElementById('finishtDate').dataset.date
-            if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
-              var marker = L.circleMarker(coords, {
-                radius: 10, // 半径を設定
-                color: color, // 外側の色を赤に設定
-                fillColor: rgba, // 中心の色を透明な赤に設定
-                fillOpacity: 1 // 塗りつぶしの透明度を設定
-              }).addTo(map);
+            if(document.getElementById('date').textContent !== ""){
+              var start = document.getElementById('startDate').dataset.date
+              var finish = document.getElementById('finishtDate').dataset.date
+              if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
+                var marker = L.circleMarker(coords, {
+                  radius: 10, // 半径を設定
+                  color: color, // 外側の色を赤に設定
+                  fillColor: rgba, // 中心の色を透明な赤に設定
+                  fillOpacity: 1 // 塗りつぶしの透明度を設定
+                }).addTo(map);
+              }
+            }else {
+              if (coords && ttl === "震源・震度情報") { // 緯度と経度が取得できた場合
+                var marker = L.circleMarker(coords, {
+                  radius: 10, // 半径を設定
+                  color: color, // 外側の色を赤に設定
+                  fillColor: rgba, // 中心の色を透明な赤に設定
+                  fillOpacity: 1 // 塗りつぶしの透明度を設定
+                }).addTo(map);
+              }
             }
             loadPage(date)
           });
