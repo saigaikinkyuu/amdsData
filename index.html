@@ -59,12 +59,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-top: 100px solid #fff;
-      border-right: 20px solid transparent;
-      border-bottom: 100px solid #fff;
-      border-left: 20px solid #0048a6;
+      width: 200px;
+      box-shadow: 0 0 0 2.5px #0048a6;
+      border-top: 70px solid #fff;
+      border-right: 20px solid #0048a6;
     }
 
     .main::after {
@@ -72,7 +70,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      width: 200px;
+      transform: translate(-50%, 0%);
       font-size: 50px;
       color: #0048a6;
     }
@@ -80,10 +79,11 @@
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
-  <div class="main">
-    <h3>震源分布</h3>
+  <div class="main" style="bottom: 680px; z-index: 10000;"></div>
+  <div style="background-color: black; color: white;">
+    <h3 id="date"></h3>
   </div>
-  <div id="legend" style="color: white;font-size: 20px; z-index: 10000;position: absolute; bottom: 450px; left: 40px; background-color: #000000eb; padding: 5px; width: 190px;">
+  <div id="legend" style="color: white;font-size: 20px; z-index: 10000;position: absolute; bottom: 400px; left: 40px; background-color: #000000eb; padding: 5px; width: 190px;">
     <div><span class="legend-circle red"></span> <span>深さ0〜30km</span></div>
     <div><span class="legend-circle orange"></span> <span>深さ30〜100km</span></div>
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
