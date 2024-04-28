@@ -109,8 +109,9 @@
     <button onclick="hidePop()">送信</button>
   </div>
   <script>
+    var map
     function map(type){
-    var map = L.map('map', {
+    map = L.map('map', {
       zoomControl: false // ズームコントロールを非表示にする
     }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
     
@@ -222,7 +223,16 @@
     // JSONデータからマーカーを作成
     addMarkersFromJSONURL(jsonURL);
     }
-    map("A")
+    // マップをリセットする関数
+    function resetMap() {
+      map.remove(); // 現在の地図を削除
+      map("B"); // 新しい地図を初期化
+    }
+
+    // ページ読み込み時にマップを初期化
+    window.onload = function() {
+      map("A");
+    };
   </script>
   <script>
     function loadPage(date) {
