@@ -176,7 +176,7 @@
               }else {
                 console.log("失敗B")
               }
-              console.log(item.at)
+              console.log(new Date(item.at) + "," + item.anm)
               if (coords && ttl === "震源・震度情報" && new Date(item.at) >= new Date(start) && new Date(item.at) <= new Date(finish)) { // 緯度と経度が取得できた場合
                 var marker = L.circleMarker(coords, {
                   radius: 10, // 半径を設定
