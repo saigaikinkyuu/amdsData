@@ -90,8 +90,10 @@
     <div><span class="legend-circle blue"></span> <span>深さ300km〜</span></div>
   </div>
   <script>
-    var map = L.map('map').setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
-
+    var map = L.map('map', {
+      zoomControl: false // ズームコントロールを非表示にする
+    }).setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
+    
     // 日本の範囲を表示するための境界線を描画
     var japanBounds = L.latLngBounds(
       L.latLng(20.0, 122.0), // 南西端の緯度経度
@@ -104,7 +106,6 @@
       attribution: '地理院地図',
       maxZoom: 7,
       minZoom: 4, // ミニマムズームレベルを設定
-      zoomControl: false
     }).addTo(map);
     // マップの移動範囲を日本国内に制限
     map.setMaxBounds(japanBounds);
