@@ -49,11 +49,20 @@
       border-radius: 50%;
       box-shadow: 0 0 0 2.5px blue;
     }
+    .main {
+      display: inline-block;
+      width: 200px;
+      border-bottom: 200px solid #ccc;
+      border-right: 50px solid transparent;
+    }
   </style>
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
-  <div id="legend" style="font-size: 20px; z-index: 10000;position: absolute; bottom: 450px; left: 40px; background-color: #00000091; padding: 5px; width: 190px;">
+  <div class="main">
+    <h3>震源分布</h3>
+  </div>
+  <div id="legend" style="color: white;font-size: 20px; z-index: 10000;position: absolute; bottom: 450px; left: 40px; background-color: #000000eb; padding: 5px; width: 190px;">
     <div><span class="legend-circle red"></span> <span>深さ0〜30km</span></div>
     <div><span class="legend-circle orange"></span> <span>深さ30〜100km</span></div>
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
