@@ -79,9 +79,11 @@
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
-  <div class="main" style="bottom: 680px; z-index: 10000;"></div>
-  <div style="height: 60px;bottom: 560px;position: absolute;z-index: 10000;width: 400px;background-color: #000000a6;color: white;" onclick="changeDate()">
-    <h3 id="date" style="margin: 0px;margin-top: 5px;font-size: 35px;"></h3>
+  <div style="bottom: 560px;">
+    <div class="main" style="bottom: 680px; z-index: 10000;"></div>
+    <div style="height: 60px;bottom: 560px;position: absolute;z-index: 10000;width: 400px;background-color: #000000a6;color: white;" onclick="changeDate()">
+      <h3 id="date" style="margin: 0px;margin-top: 5px;font-size: 35px;"></h3>
+    </div>
   </div>
   <div id="legend" style="color: white;font-size: 20px; z-index: 10000;position: absolute; bottom: 420px; left: 40px; background-color: #000000eb; padding: 5px; width: 190px;">
     <div><span class="legend-circle red"></span> <span>深さ0〜30km</span></div>
@@ -89,7 +91,7 @@
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
     <div><span class="legend-circle blue"></span> <span>深さ300km〜</span></div>
   </div>
-  <div id="setting" style="z-index: 10000; position: absolute;">
+  <div id="setting" style="z-index: 10000; position: absolute; bottom: 300px;">
     <lavel>開始日：</lavel><input id="startDate" type="date" value="none" data-date="" />
     <lavel>終了日：</lavel><input id="finishDate" type="date" value="none" data-date="" />
     <button onclick="hidePop()">送信</button>
@@ -201,10 +203,25 @@
     function loadPage(date) {
       var startDate = new Date(date).getFullYear() + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
       var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
+      document.getElementById('finishDate').setAttribute('min',startDate)
       const weekItems = ["日", "月", "火", "水", "木", "金", "土"];
       document.getElementById('startDate').dataset.date = startDate
       document.getElementById('finishDate').dataset.date = finishDate
       document.getElementById('date').textContent = new Date(date).getDate() + "日(" + weekItems[new Date(date).getDay()] + ")~" + new Date().getDate() + "日(" + weekItems[new Date().getDay()] + ")"
+    }
+    function changeDate() {
+      document.getElementById('setting').style.display = "show"
+    }
+    function hidePop() {
+      document.getElementById('setting').style.display = "none"
+      var start = document.getElementById('startDate').value
+      var finish = document.getElementById('finishDate').value
+      var startDate = new Date(start).getFullYear() + "-" + ("0" + new Date(start).getMonth()+1).slice(-2) + "-" + ("0" + new Date(start).getDate()).slice(-2)
+      var finishDate = new Date(finish).getFullYear() + "-" + ("0" + new Date(finish).getMonth()+1).slice(-2) + "-" + ("0" + new Date(finish).getDate()).slice(-2)
+      const weekItems = ["日", "月", "火", "水", "木", "金", "土"];
+      document.getElementById('startDate').dataset.date = startDate
+      document.getElementById('finishDate').dataset.date = finishDate
+      document.getElementById('date').textContent = new Date(start).getDate() + "日(" + weekItems[new Date(start).getDay()] + ")~" + new Date(finish).getDate() + "日(" + weekItems[new Date(finish).getDay()] + ")"
     }
   </script>
 </body>
