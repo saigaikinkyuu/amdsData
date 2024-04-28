@@ -127,11 +127,13 @@
         .then(response => response.json())
         .then(data => {
           data.forEach(item => {
+            if(item === data.length){
+              var date = item.at
+            }
             var cod = item.cod;
             var ttl = item.ttl;
             var coords = extractCoordinates(cod);
             var depth = extractDepth(cod); // 深さを抽出
-            console.log(depth)
             if(depth/1000 <= 30){
               var color = "red"
               var rgba = 'rgba(255,0,0,0.3)'
@@ -153,6 +155,7 @@
                 fillOpacity: 1 // 塗りつぶしの透明度を設定
               }).addTo(map);
             }
+            loadPage(date)
           });
         })
         .catch(error => {
@@ -190,15 +193,16 @@
     // JSONデータからマーカーを作成
     addMarkersFromJSONURL(jsonURL);
     }
-
+    map()
   </script>
   <script>
-    function loadPage() {
-      var startDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
+    function loadPage(date) {
+      var startDate = new Date(date).getFullYear() + "-" + ("0" + new Date(date).getMonth()+1).slice(-2) + "-" + ("0" + new Date(date).getDate()).slice(-2)
       var finishDate = new Date().getFullYear() + "-" + ("0" + new Date().getMonth()+1).slice(-2) + "-" + ("0" + new Date().getDate()).slice(-2)
-      document.getElementById('date').textContent = new Date(start).getDate() + "日(" + new Date(start).getDay() + ")~" + new Date(finish).getDate() + "日(" + new Date(finish).getDay() + ")"
+      document.getElementById('startDate').dataset.date = startDate
+      document.getElementById('finishDate').dataset.date = finishDate
+      document.getElementById('date').textContent = new Date(date).getDate() + "日(" + new Date(date).getDay() + ")~" + new Date(date).getDate() + "日(" + new Date(date).getDay() + ")"
     }
-    loadPage()
   </script>
 </body>
 </html>
