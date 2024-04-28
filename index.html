@@ -7,6 +7,13 @@
 </head>
 <body>
   <div id="map" style="height: 700px;"></div>
+  <div id="legend" style="position: absolute; bottom: 10px; left: 10px; background-color: white; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+    <h4>凡例</h4>
+    <div><span class="legend-circle" style="background-color: red;"></span> 〜30km</div>
+    <div><span class="legend-circle" style="background-color: orange;"></span> 30km〜100km</div>
+    <div><span class="legend-circle" style="background-color: yellow;"></span> 100km〜300km</div>
+    <div><span class="legend-circle" style="background-color: blue;"></span> 300km〜</div>
+  </div>
   <script>
     var map = L.map('map').setView([35.682839, 139.759455], 6); // 日本の中心座標を設定
 
