@@ -86,12 +86,6 @@
       padding-top: 30px;
       left: 190px;
     }
-    .visible {
-      display: block;
-    }
-    .hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -108,7 +102,7 @@
     <div><span class="legend-circle yellow"></span> <span>深さ100〜300km</span></div>
     <div><span class="legend-circle blue"></span> <span>深さ300km〜</span></div>
   </div>
-  <div id="setting" style="z-index: 10000; position: absolute; bottom: 300px; display: none;" onclick="changeDate()">
+  <div id="setting" style="z-index: 10000; position: absolute; bottom: 300px; display none:">
     <lavel>開始日：</lavel><input id="startDate" type="date" value="none" data-date="" />
     <lavel>終了日：</lavel><input id="finishDate" type="date" value="none" data-date="" />
     <button onclick="hidePop()">送信</button>
@@ -260,12 +254,10 @@
       document.getElementById('date').textContent = new Date(date).getDate() + "日(" + weekItems[new Date(date).getDay()] + ")~" + new Date().getDate() + "日(" + weekItems[new Date().getDay()] + ")"
     }
     function changeDate() {
-      document.getElementById('setting').classList.add("visible");
-      document.getElementById('setting').classList.remove("hidden");
+      document.getElementById('setting').style.display = "block";
     }
     function hidePop() {
-      document.getElementById('setting').classList.remove("visible");
-      document.getElementById('setting').classList.add("hidden");
+      document.getElementById('setting').style.display = "none";
       var start = document.getElementById('startDate').value
       var finish = document.getElementById('finishDate').value
       var startDate = new Date(start).getFullYear() + "-" + ("0" + (new Date(start).getMonth()+1)).slice(-2) + "-" + ("0" + new Date(start).getDate()).slice(-2)
